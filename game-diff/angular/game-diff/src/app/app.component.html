@@ -1,0 +1,40 @@
+<div el-container direction="vertical" class="demo-box">
+  <div el-header height="50px" style="background:#c0c7c2;">
+    <div style="margin-top: 2px;float: left;">
+      <el-select [(model)]="value" placeholder="请选择规模">
+        <el-option *ngFor="let item of [{value: '1',label: '20*20' },
+                { value: '2', label: '40*40' },
+                { value: '3', label: '60*60' },
+                { value: '4', label: '80*80' }]"
+          [label]="item.label" [value]="item.value">
+        </el-option>
+      </el-select>
+      <el-button style="margin-left: 20px;font-size: 18px" type="primary" (click)="start()">开始</el-button>
+    </div>
+  </div>
+  <div el-main style="margin-top: 50px;">
+    <div style="float: left;">
+      <ng-container *ngFor="let row of cells">
+        <ng-container *ngFor="let col of row">
+          <div style="width: 10px;height: 10px;float: left;" [class]="colors[col]"></div>
+        </ng-container>
+        <div style="clear: both;"></div>
+      </ng-container>
+    </div>
+    <div style="float: left;margin-left: 50px;">
+      <ng-container *ngFor="let row of cells; let i = index">
+        <ng-container *ngFor="let col of row; let j = index">
+          <div style="width: 10px;height: 10px;float: left;" [class]="colorStyleClass(i, j)" (click)="invalid(i, j)"></div>
+        </ng-container>
+        <div style="clear: both;"></div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="box-card">
+    <el-dialog [title]="'ACCOMPLISHMENT!'" [visible]="dialogVisable" [center]="true" [show-close]="false">
+      <span>{{dialogMsg}}</span>
+      <br>
+      <el-button style="float: right;" (click)="closeDialog()">确认</el-button>
+    </el-dialog>
+  </div>
+</div>

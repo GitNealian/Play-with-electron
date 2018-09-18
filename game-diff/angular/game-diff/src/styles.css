@@ -1,0 +1,6 @@
+@import "~element-angular/theme/index.css";
+
+body {
+  margin: 0px;
+  overflow: hidden;  /* 解决puzzle的size从小变大时，由于滚动条的出现使得宽度计算不正确的问题 */
+}
