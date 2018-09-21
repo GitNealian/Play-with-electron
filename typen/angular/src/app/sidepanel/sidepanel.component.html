@@ -1,0 +1,81 @@
+<div style="text-align: center; margin-top: 50px; width: 250px;">
+  <div style="width: 217px; margin: auto;">
+    <table style="text-align: left">
+      <tr>
+        <td colspan="2">
+          <img width="217px" height="52px" [src]="assistentService.img_base64" alt="">
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 50%">
+          <span>&nbsp;&nbsp;五笔编码：</span>
+        </td>
+        <td style="width: 50%">
+          <strong style="font-size: 18px;">{{assistentService.code}}</strong>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+  <div style="width: 200px; margin: auto; margin-top: 50px;">
+    <table style="text-align: left">
+      <tr>
+        <td>总共用时：
+        </td>
+        <td class="data">
+          {{typenService.rsTime}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          平均速度：
+        </td>
+        <td class="data">
+          {{typenService.rsSpeed}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          平均击键：
+        </td>
+        <td class="data">
+          {{typenService.rsHits}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          平均码长：
+        </td>
+        <td class="data">
+          {{typenService.rsLen}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          退格次数：
+        </td>
+        <td class="data">
+          {{typenService.rsBack}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          正&nbsp;&nbsp;确&nbsp;&nbsp;率：
+        </td>
+        <td class="data">
+          {{typenService.rsAccuracy}}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;width:250px">
+    <el-button-group>
+      <el-button type="primary" round="true" size="small" [elDisabled]="!typenService.stIng" (click)="restart()">重来(F5)</el-button>
+      <el-button type="danger" round="true" size="small" [elDisabled]="!typenService.stIng" (click)="pause()">
+        {{!typenService.stPaused ? '暂停(F6)': '开始(F6)'}}
+      </el-button>
+      <el-button type="primary" round="true" size="small" [elDisabled]="!typenService.stIng" (click)="terminate()">结束(F7)</el-button>
+    </el-button-group>
+  </div>
+</div>

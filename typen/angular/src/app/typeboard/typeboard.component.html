@@ -1,0 +1,12 @@
+<div style="width: 800px;margin: auto" style="font-size: 24px;font-family: 'Ubuntu Mono'">
+  <div *ngFor="let text of typenService.textArray; let i = index" style="margin-bottom: 10px;font-size: 24px;background: #f9f6f2;padding: 5px 10px;position: relative;border-radius: 5px;">
+    <div style="background: #f9f6f2;border: 1px solid #f9f6f2;">
+      <span *ngFor="let c of text" [class]="c.styleClass">{{c.character}}</span>
+      <input id="{{'input-'+typenService.curRowIndex}}" *ngIf="typenService.curRowIndex == i" type="text" [ngModel]="typenService.inputText"
+        (ngModelChange)="onType($event)" (keyup)="onKey($event)" style="height:30px; font-size: 24px;font-family: 'Ubuntu Mono'; width: 780px"
+        autofocus='autofocus' [disabled]="!typenService.stIng || typenService.stPaused">
+      <input *ngIf="typenService.curRowIndex != i" type="text" [ngModel]="typenService.inputHistory[i]" disabled="true"
+        style="height:30px; font-size: 24px;font-family: 'Ubuntu Mono'; width: 780px">
+    </div>
+  </div>
+</div>
